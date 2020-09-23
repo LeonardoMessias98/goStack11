@@ -5,7 +5,7 @@ import CreateUserService from '../services/CreateUserService';
 const appointmentsRouter = Router();
 
 appointmentsRouter.post('/', async (request, response) => {
-  try {  
+  try {
     const { name, email, password } = request.body;
 
     const createUser = new CreateUserService();
@@ -17,11 +17,10 @@ appointmentsRouter.post('/', async (request, response) => {
       email: user.email,
       id: user.id,
       created_at: user.created_at,
-      updated_at: user.updated_at
+      updated_at: user.updated_at,
     });
-
   } catch (err) {
-    return response.status(400).json({ error: err.message })
+    return response.status(400).json({ error: err.message });
   }
 });
 

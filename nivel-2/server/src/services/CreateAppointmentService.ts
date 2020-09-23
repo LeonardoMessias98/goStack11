@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable camelcase */
 import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
@@ -10,20 +12,19 @@ interface Request {
 }
 
 class CreateAppointmentService {
-  public async execute({date, provider_id}: Request): Promise<Appointment> {
+  public async execute({ date, provider_id }: Request): Promise<Appointment> {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
     const appointmentDate = startOfHour(date);
 
     const findAppointmentInSameDate = await appointmentsRepository.findByDate(
-      appointmentDate
+      appointmentDate,
     );
-  
+
     if (findAppointmentInSameDate) {
       throw Error('This appointment is already booked');
     }
-  
-  
+
     const appointment = appointmentsRepository.create({
       provider_id,
       date: appointmentDate,

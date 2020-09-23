@@ -11,7 +11,6 @@ interface Request {
 
 class CreateUserService {
   public async execute({ name, email, password }: Request): Promise<User> {
-
     const usersRepository = getRepository(User);
 
     const checkUserExist = await usersRepository.findOne({
@@ -27,7 +26,7 @@ class CreateUserService {
     const user = await usersRepository.create({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     await usersRepository.save(user);
