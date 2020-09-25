@@ -1,11 +1,11 @@
-import { 
-  Entity, 
-  Column, 
-  PrimaryGeneratedColumn, 
-  CreateDateColumn, 
-  UpdateDateColumn, 
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm';
 
 import User from './User';
@@ -30,7 +30,6 @@ class Appointment {
 
   @UpdateDateColumn()
   updated_at: Date;
-
 }
 
 export default Appointment;
